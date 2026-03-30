@@ -3,3 +3,4 @@ library;
 
 export 'domain.dart';
 export 'services.dart';
+export 'widgets.dart';
