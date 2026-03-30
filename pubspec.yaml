@@ -1,0 +1,24 @@
+name: yaraui
+description: "SoftYesTI's cross-platform Design System."
+
+homepage: https://softyes.com.br
+repository: https://github.com/softyesti/yaraui
+
+version: 0.1.0
+
+environment:
+  sdk: ^3.11.4
+  flutter: ^3.41.6
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  very_good_analysis: ^10.2.0
+
+flutter:
