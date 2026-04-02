@@ -1,1 +1,1 @@
-export 'src/domain/window_entity.dart';
+export 'src/domain/entities/window_settings.dart' show WindowSettings;

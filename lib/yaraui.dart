@@ -6,7 +6,7 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
-import 'package:yaraui/src/domain/window_entity.dart';
+import 'package:yaraui/src/domain/entities/window_settings.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 
 export 'domain.dart';
@@ -21,12 +21,12 @@ abstract class YaraUI {
     required WindowSettings window,
   }) async {
     WidgetsFlutterBinding.ensureInitialized();
-    runApp(app);
 
     GetIt.I.registerSingletonAsync(
       () async => WindowService.create().init(window),
       dispose: (service) async => service.dispose(),
       instanceName: 'yaraui_window_service',
+      onCreated: (_) => runApp(app),
     );
 
     log('Initialized!', name: 'yaraui');

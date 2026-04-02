@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:yaraui/src/domain/window_entity.dart';
+import 'package:yaraui/src/domain/entities/window_settings.dart';
 import 'package:yaraui/src/services/window/bitsdojo_window_service.dart';
 
 /// Service to manage application window.
@@ -12,29 +12,32 @@ abstract class WindowService {
   factory WindowService.create() => const BitsdojoWindowService();
 
   /// Initializes the window service.
-  FutureOr<WindowService> init(WindowSettings settings);
+  Future<WindowService> init(WindowSettings settings);
 
   /// Disposes the window service.
-  FutureOr<void> dispose();
+  Future<void> dispose();
 
   /// Open the window.
-  FutureOr<void> open();
+  Future<void> open();
 
   /// Close the window.
-  FutureOr<void> close();
+  Future<void> close();
 
   /// Hides the window.
-  FutureOr<void> hide();
+  Future<void> hide();
 
   /// Restore the window to initial state.
-  FutureOr<void> restore();
+  Future<void> restore();
 
   /// Minimizes the window.
-  FutureOr<void> minimize();
+  Future<void> minimize();
 
   /// Maximizes the window.
-  FutureOr<void> maximize();
+  Future<void> maximize();
 
   /// Maximizes the window or restore if its maximized.
-  FutureOr<void> maxOrRestore();
+  Future<void> maxOrRestore();
+
+  /// Start dragging the window.
+  Future<void> drag();
 }

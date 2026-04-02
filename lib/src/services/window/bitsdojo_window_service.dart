@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
-import 'package:yaraui/src/domain/window_entity.dart';
+import 'package:yaraui/src/domain/entities/window_settings.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 
 /// Bitsdojo package implementation of [WindowService].
@@ -12,7 +12,7 @@ class BitsdojoWindowService extends WindowService {
   const BitsdojoWindowService();
 
   @override
-  FutureOr<WindowService> init(WindowSettings settings) async {
+  Future<WindowService> init(WindowSettings settings) async {
     await Window.initialize();
     await Future.wait([_setEffect(), _hideControls()]);
 
@@ -29,28 +29,28 @@ class BitsdojoWindowService extends WindowService {
   }
 
   @override
-  FutureOr<void> dispose() => appWindow.close;
+  Future<void> dispose() async => appWindow.close();
 
   @override
-  FutureOr<void> open() => appWindow.show;
+  Future<void> open() async => appWindow.show();
 
   @override
-  FutureOr<void> close() => appWindow.close;
+  Future<void> close() async => appWindow.close();
 
   @override
-  FutureOr<void> hide() => appWindow.hide;
+  Future<void> hide() async => appWindow.hide();
 
   @override
-  FutureOr<void> restore() => appWindow.restore;
+  Future<void> restore() async => appWindow.restore();
 
   @override
-  FutureOr<void> minimize() => appWindow.minimize;
+  Future<void> minimize() async => appWindow.minimize();
 
   @override
-  FutureOr<void> maximize() => appWindow.maximize;
+  Future<void> maximize() async => appWindow.maximize();
 
   @override
-  FutureOr<void> maxOrRestore() => appWindow.maximizeOrRestore;
+  Future<void> maxOrRestore() async => appWindow.maximizeOrRestore();
 
   Future<void> _hideControls() async => Future.wait([
     Window.hideWindowControls(),
@@ -69,4 +69,7 @@ class BitsdojoWindowService extends WindowService {
       String() => throw UnsupportedError(''),
     },
   );
+
+  @override
+  Future<void> drag() async => appWindow.startDragging();
 }
