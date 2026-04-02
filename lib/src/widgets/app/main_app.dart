@@ -1,7 +1,7 @@
-part of 'app_widget.dart';
+part of 'app.dart';
 
-class _WidgetsApp extends StatelessWidget {
-  const _WidgetsApp({
+class _MainApp extends StatelessWidget {
+  const _MainApp({
     required this.color,
     required this.title,
     required this.actions,

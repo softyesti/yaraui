@@ -16,6 +16,7 @@ dependencies:
 
   get_it: ^9.2.1
   flutter_acrylic: ^1.1.4
+  fluentui_system_icons: ^1.1.273
   bitsdojo_window:
     git:
       ref: master

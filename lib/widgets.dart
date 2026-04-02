@@ -1,1 +1,1 @@
-export 'src/widgets/app/app_widget.dart' show YaraApp;
+export 'src/widgets/app/app.dart' show YaraApp;

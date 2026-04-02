@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/widgets/window/window.dart';
 
-part 'widgets_app_widget.dart';
+part 'main_app.dart';
 
 /// An application that uses Yara Design.
 class YaraApp extends StatelessWidget {
@@ -351,12 +352,12 @@ class YaraApp extends StatelessWidget {
   final TextStyle? textStyle;
 
   @override
-  Widget build(BuildContext context) => _WidgetsApp(
+  Widget build(BuildContext context) => _MainApp(
     color: Colors.transparent,
     title: title,
     actions: actions,
     backButtonDispatcher: backButtonDispatcher,
-    builder: builder,
+    builder: builder ?? (_, child) => WindowWidget(child),
     debugShowCheckedModeBanner: debugShowCheckedModeBanner,
     debugShowWidgetInspector: debugShowWidgetInspector,
     exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,
@@ -375,10 +376,12 @@ class YaraApp extends StatelessWidget {
     onGenerateTitle: onGenerateTitle,
     onNavigationNotification: onNavigationNotification,
     onUnknownRoute: onUnknownRoute,
-    pageRouteBuilder: <T>(settings, builder) => PageRouteBuilder(
-      settings: settings,
-      pageBuilder: (context, _, _) => builder(context),
-    ),
+    pageRouteBuilder:
+        pageRouteBuilder ??
+        <T>(settings, builder) => PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, _, _) => builder(context),
+        ),
     restorationScopeId: restorationScopeId,
     routeInformationParser: routeInformationParser,
     routeInformationProvider: routeInformationProvider,
