@@ -1,11 +1,9 @@
 part of 'window.dart';
 
 class _WindowTitleBar extends StatelessWidget {
-  const _WindowTitleBar({
-    required this.service,
-  });
+  const _WindowTitleBar(this._viewModel);
 
-  final WindowService service;
+  final _WindowViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +22,8 @@ class _WindowTitleBar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               behavior: .translucent,
-              onPanStart: (_) async => service.drag(),
-              onDoubleTap: () async => service.maxOrRestore(),
+              onPanStart: (_) async => _viewModel.drag(),
+              onDoubleTap: () async => _viewModel.maximize(),
               child: const SizedBox.expand(),
             ),
           ),
@@ -34,9 +32,9 @@ class _WindowTitleBar extends StatelessWidget {
             .linux => const LinuxWindowControls(),
             .windows => WindowsWindowControls(
               dimension: height,
-              onClosePressed: () async => service.close(),
-              onMaximizePressed: () async => service.maxOrRestore(),
-              onMinimizePressed: () async => service.minimize(),
+              onClosePressed: () async => _viewModel.close(),
+              onMaximizePressed: () async => _viewModel.maximize(),
+              onMinimizePressed: () async => _viewModel.minimize(),
             ),
             OperatingSystem() => throw UnsupportedError(''),
           },

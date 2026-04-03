@@ -8,28 +8,40 @@ import 'package:yaraui/src/widgets/window/controls/macos_window_controls.dart';
 import 'package:yaraui/src/widgets/window/controls/windows_window_controls.dart';
 
 part 'window_title_bar.dart';
+part 'window_view_model.dart';
 
 /// Application window.
-class WindowWidget extends StatefulWidget {
-  /// Creates a new [WindowWidget].
-  const WindowWidget(this.child, {super.key});
+class Window extends StatefulWidget {
+  /// Creates a new [Window].
+  const Window(
+    this.child, {
+    super.key,
+  });
 
   /// The widget below this widget in the tree.
   final Widget? child;
 
   @override
-  State<StatefulWidget> createState() => _WindowWidgetState();
+  State<StatefulWidget> createState() => _WindowState();
 }
 
-class _WindowWidgetState extends State<WindowWidget> {
-  late final WindowService _service;
+class _WindowState extends State<Window> {
+  late final _WindowViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _service = GetIt.I.get<WindowService>(
-      instanceName: 'yaraui_window_service',
+    _viewModel = _WindowViewModel(
+      GetIt.I.get<WindowService>(
+        instanceName: 'yaraui_window_service',
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
   }
 
   @override
@@ -38,12 +50,14 @@ class _WindowWidgetState extends State<WindowWidget> {
     alignment: .center,
     clipBehavior: .antiAlias,
     children: [
-      Positioned.fill(child: SizedBox.expand(child: widget.child)),
+      Positioned.fill(
+        child: widget.child ?? const SizedBox.expand(),
+      ),
       Positioned(
         top: 0,
         left: 0,
         right: 0,
-        child: _WindowTitleBar(service: _service),
+        child: _WindowTitleBar(_viewModel),
       ),
     ],
   );
