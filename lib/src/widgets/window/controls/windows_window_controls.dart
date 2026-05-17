@@ -26,8 +26,12 @@ class WindowsWindowControls extends StatelessWidget {
   final VoidCallback onMinimizePressed;
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-    borderRadius: const .only(bottomLeft: .circular(8)),
+  Widget build(BuildContext context) => Container(
+    clipBehavior: .antiAlias,
+    decoration: const BoxDecoration(
+      color: Color(0xFF000000),
+      borderRadius: .only(bottomLeft: .circular(8)),
+    ),
     child: Row(
       mainAxisSize: .min,
       children: [
