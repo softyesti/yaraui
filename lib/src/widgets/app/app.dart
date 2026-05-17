@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/utils/platform_util.dart';
 import 'package:yaraui/src/widgets/window/window.dart';
 
 part 'main_app.dart';
@@ -353,11 +353,14 @@ class YaraApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _MainApp(
-    color: Colors.transparent,
+    color: const Color(0x00000000),
     title: title,
     actions: actions,
     backButtonDispatcher: backButtonDispatcher,
-    builder: builder ?? (_, child) => WindowWidget(child),
+    builder: switch (PlatformUtil.operatingSystem) {
+      .macos || .linux || .windows => (_, child) => Window(child),
+      _ => builder,
+    },
     debugShowCheckedModeBanner: debugShowCheckedModeBanner,
     debugShowWidgetInspector: debugShowWidgetInspector,
     exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,

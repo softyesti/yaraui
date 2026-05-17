@@ -4,7 +4,9 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:yaraui/src/domain/entities/window_settings.dart';
+import 'package:yaraui/src/domain/enums/operating_system.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
+import 'package:yaraui/src/utils/platform_util.dart';
 
 /// Bitsdojo package implementation of [WindowService].
 class BitsdojoWindowService extends WindowService {
@@ -62,11 +64,10 @@ class BitsdojoWindowService extends WindowService {
 
   Future<void> _setEffect() async => Window.setEffect(
     dark: PlatformDispatcher.instance.platformBrightness == .dark,
-    effect: switch (Platform.operatingSystem) {
-      'macos' => .mica,
-      'windows' => .tabbed,
-      'linux' => .transparent,
-      String() => throw UnsupportedError(''),
+    effect: switch (PlatformUtil.operatingSystem) {
+      .linux => .transparent,
+      .macos || .windows => .acrylic,
+      OperatingSystem() => throw UnsupportedError(''),
     },
   );
 
