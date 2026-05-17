@@ -1,11 +1,12 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.41.6",
+  "dart.flutterSdkPath": ".fvm/versions/3.41.9",
   "cSpell.words": [
     "bitsdojo",
     "buildlog",
     "fluentui",
     "linux",
     "pubspec",
+    "scrollables",
     "softyes",
     "titlebar",
     "yaraui"
