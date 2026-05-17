@@ -45,20 +45,26 @@ class _WindowState extends State<Window> {
   }
 
   @override
-  Widget build(BuildContext context) => Stack(
-    fit: .expand,
-    alignment: .center,
-    clipBehavior: .antiAlias,
-    children: [
-      Positioned.fill(
-        child: widget.child ?? const SizedBox.expand(),
-      ),
-      Positioned(
-        top: 0,
-        left: 0,
-        right: 0,
-        child: _WindowTitleBar(_viewModel),
-      ),
-    ],
+  Widget build(BuildContext context) => ColoredBox(
+    color: const Color(0x80000000),
+    child: Stack(
+      fit: .expand,
+      alignment: .center,
+      clipBehavior: .antiAlias,
+      children: [
+        Positioned.fill(
+          child: Container(
+            padding: const .all(4),
+            child: widget.child ?? const SizedBox.expand(),
+          ),
+        ),
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: _WindowTitleBar(_viewModel),
+        ),
+      ],
+    ),
   );
 }
