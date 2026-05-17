@@ -14,9 +14,11 @@ export 'services.dart';
 export 'widgets.dart';
 
 /// SoftYesTI's cross-platform Design System.
-abstract class YaraUI {
+sealed class YaraUI {
+  const YaraUI();
+
   /// Initializes the library.
-  static FutureOr<void> init({
+  static Future<void> init({
     required Widget app,
     required WindowSettings window,
   }) async {
