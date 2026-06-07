@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/theme/theme.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
 import 'package:yaraui/src/widgets/window/window.dart';
 
@@ -352,50 +353,54 @@ class YaraApp extends StatelessWidget {
   final TextStyle? textStyle;
 
   @override
-  Widget build(BuildContext context) => _MainApp(
-    color: const Color(0x00000000),
-    title: title,
-    actions: actions,
-    backButtonDispatcher: backButtonDispatcher,
-    builder: switch (PlatformUtil.operatingSystem) {
-      .macos || .linux || .windows => (_, child) => Window(child),
-      _ => builder,
-    },
-    debugShowCheckedModeBanner: debugShowCheckedModeBanner,
-    debugShowWidgetInspector: debugShowWidgetInspector,
-    exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,
-    home: home,
-    initialRoute: initialRoute,
-    key: key,
-    locale: locale,
-    localeListResolutionCallback: localeListResolutionCallback,
-    localeResolutionCallback: localeResolutionCallback,
-    localizationsDelegates: localizationsDelegates,
-    moveExitWidgetSelectionButtonBuilder: moveExitWidgetSelectionButtonBuilder,
-    navigatorObservers: navigatorObservers,
-    navigatorKey: navigatorKey,
-    onGenerateInitialRoutes: onGenerateInitialRoutes,
-    onGenerateRoute: onGenerateRoute,
-    onGenerateTitle: onGenerateTitle,
-    onNavigationNotification: onNavigationNotification,
-    onUnknownRoute: onUnknownRoute,
-    pageRouteBuilder:
-        pageRouteBuilder ??
-        <T>(settings, builder) => PageRouteBuilder(
-          settings: settings,
-          pageBuilder: (context, _, _) => builder(context),
-        ),
-    restorationScopeId: restorationScopeId,
-    routeInformationParser: routeInformationParser,
-    routeInformationProvider: routeInformationProvider,
-    routes: routes,
-    routerConfig: routerConfig,
-    routerDelegate: routerDelegate,
-    showSemanticsDebugger: showSemanticsDebugger,
-    showPerformanceOverlay: showPerformanceOverlay,
-    shortcuts: shortcuts,
-    supportedLocales: supportedLocales,
-    tapBehaviorButtonBuilder: tapBehaviorButtonBuilder,
-    textStyle: textStyle,
+  Widget build(BuildContext context) => Theme(
+    data: DefaultThemeData(),
+    child: _MainApp(
+      color: const Color(0x00000000),
+      title: title,
+      actions: actions,
+      backButtonDispatcher: backButtonDispatcher,
+      builder: switch (PlatformUtil.operatingSystem) {
+        .macos || .linux || .windows => (_, child) => Window(child),
+        _ => builder,
+      },
+      debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+      debugShowWidgetInspector: debugShowWidgetInspector,
+      exitWidgetSelectionButtonBuilder: exitWidgetSelectionButtonBuilder,
+      home: home,
+      initialRoute: initialRoute,
+      key: key,
+      locale: locale,
+      localeListResolutionCallback: localeListResolutionCallback,
+      localeResolutionCallback: localeResolutionCallback,
+      localizationsDelegates: localizationsDelegates,
+      moveExitWidgetSelectionButtonBuilder:
+          moveExitWidgetSelectionButtonBuilder,
+      navigatorObservers: navigatorObservers,
+      navigatorKey: navigatorKey,
+      onGenerateInitialRoutes: onGenerateInitialRoutes,
+      onGenerateRoute: onGenerateRoute,
+      onGenerateTitle: onGenerateTitle,
+      onNavigationNotification: onNavigationNotification,
+      onUnknownRoute: onUnknownRoute,
+      pageRouteBuilder:
+          pageRouteBuilder ??
+          <T>(settings, builder) => PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (context, _, _) => builder(context),
+          ),
+      restorationScopeId: restorationScopeId,
+      routeInformationParser: routeInformationParser,
+      routeInformationProvider: routeInformationProvider,
+      routes: routes,
+      routerConfig: routerConfig,
+      routerDelegate: routerDelegate,
+      showSemanticsDebugger: showSemanticsDebugger,
+      showPerformanceOverlay: showPerformanceOverlay,
+      shortcuts: shortcuts,
+      supportedLocales: supportedLocales,
+      tapBehaviorButtonBuilder: tapBehaviorButtonBuilder,
+      textStyle: textStyle,
+    ),
   );
 }
