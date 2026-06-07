@@ -7,6 +7,7 @@ class _WindowViewModel extends ChangeNotifier {
 
   Future<void> drag() async => _service.drag();
   Future<void> close() async => _service.close();
-  Future<void> maximize() async => _service.maxOrRestore();
   Future<void> minimize() async => _service.minimize();
+  Future<void> maximize() async => _service.maxOrRestore();
+  Future<void> fullscreen() async => _service.fullOrRestore();
 }

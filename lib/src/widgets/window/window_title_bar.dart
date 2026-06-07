@@ -9,17 +9,18 @@ class _WindowTitleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = switch (PlatformUtil.operatingSystem) {
       .linux => 32.0,
-      .macos => 32.0,
+      .macos => 54.0,
       .windows => 32.0,
       OperatingSystem() => throw UnsupportedError(''),
     };
 
     return SizedBox(
       height: height,
-      child: Row(
-        mainAxisAlignment: .center,
+      child: Stack(
+        fit: .expand,
+        alignment: .center,
         children: [
-          Expanded(
+          Positioned.fill(
             child: GestureDetector(
               behavior: .translucent,
               onPanStart: (_) async => _viewModel.drag(),
@@ -27,17 +28,23 @@ class _WindowTitleBar extends StatelessWidget {
               child: const SizedBox.expand(),
             ),
           ),
-          switch (PlatformUtil.operatingSystem) {
-            .macos => const MacOSWindowControls(),
-            .linux => const LinuxWindowControls(),
-            .windows => WindowsWindowControls(
-              dimension: height,
-              onClosePressed: () async => _viewModel.close(),
-              onMaximizePressed: () async => _viewModel.maximize(),
-              onMinimizePressed: () async => _viewModel.minimize(),
-            ),
-            OperatingSystem() => throw UnsupportedError(''),
-          },
+          Positioned.fill(
+            child: switch (PlatformUtil.operatingSystem) {
+              .macos => MacOSWindowControls(
+                onClosePressed: () async => _viewModel.close(),
+                onMaximizePressed: () async => _viewModel.fullscreen(),
+                onMinimizePressed: () async => _viewModel.minimize(),
+              ),
+              .linux => const LinuxWindowControls(),
+              .windows => WindowsWindowControls(
+                dimension: height,
+                onClosePressed: () async => _viewModel.close(),
+                onMaximizePressed: () async => _viewModel.maximize(),
+                onMinimizePressed: () async => _viewModel.minimize(),
+              ),
+              OperatingSystem() => throw UnsupportedError(''),
+            },
+          ),
         ],
       ),
     );
