@@ -52,7 +52,22 @@ class BitsdojoWindowService extends WindowService {
   Future<void> maximize() async => appWindow.maximize();
 
   @override
+  Future<void> fullscreen() async => Window.enterFullscreen();
+
+  @override
   Future<void> maxOrRestore() async => appWindow.maximizeOrRestore();
+
+  @override
+  Future<void> fullOrRestore() async => switch (PlatformUtil.operatingSystem) {
+    .macos => switch (await Window.isWindowFullscreened()) {
+      true => Window.exitFullscreen(),
+      false => Window.enterFullscreen(),
+    },
+    OperatingSystem() => throw UnsupportedError(''),
+  };
+
+  @override
+  Future<void> drag() async => appWindow.startDragging();
 
   Future<void> _hideControls() async => Future.wait([
     Window.hideWindowControls(),
@@ -70,7 +85,4 @@ class BitsdojoWindowService extends WindowService {
       OperatingSystem() => throw UnsupportedError(''),
     },
   );
-
-  @override
-  Future<void> drag() async => appWindow.startDragging();
 }

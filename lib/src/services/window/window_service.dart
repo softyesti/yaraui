@@ -35,8 +35,14 @@ abstract class WindowService {
   /// Maximizes the window.
   Future<void> maximize();
 
+  /// Fullscreens the window.
+  Future<void> fullscreen();
+
   /// Maximizes the window or restore if its maximized.
   Future<void> maxOrRestore();
+
+  /// Fullscreens the window or restore if its fullscreened.
+  Future<void> fullOrRestore();
 
   /// Start dragging the window.
   Future<void> drag();
