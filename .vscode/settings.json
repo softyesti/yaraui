@@ -1,9 +1,12 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.41.9",
+  "dart.flutterSdkPath": ".fvm/versions/3.44.1",
   "cSpell.words": [
     "bitsdojo",
     "buildlog",
+    "cupertino",
     "fluentui",
+    "fullscreened",
+    "Fullscreens",
     "linux",
     "pubspec",
     "scrollables",

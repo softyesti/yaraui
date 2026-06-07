@@ -7,8 +7,8 @@ repository: https://github.com/softyesti/yaraui
 version: 0.1.0
 
 environment:
-  sdk: ^3.11.5
-  flutter: ^3.41.9
+  sdk: ^3.12.1
+  flutter: ^3.44.1
 
 dependencies:
   flutter:
@@ -16,6 +16,7 @@ dependencies:
 
   get_it: ^9.2.1
   flutter_acrylic: ^1.1.4
+  cupertino_icons: ^1.0.9
   fluentui_system_icons: ^1.1.273
   two_dimensional_scrollables: ^0.5.1
   bitsdojo_window:
