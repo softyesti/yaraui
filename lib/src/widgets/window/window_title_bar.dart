@@ -1,21 +1,16 @@
 part of 'window.dart';
 
-class _WindowTitleBar extends StatelessWidget {
+class _WindowTitleBar extends StatelessWidget with ThemeMixin {
   const _WindowTitleBar(this._viewModel);
 
   final _WindowViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    final height = switch (PlatformUtil.operatingSystem) {
-      .linux => 32.0,
-      .macos => 54.0,
-      .windows => 32.0,
-      OperatingSystem() => throw UnsupportedError(''),
-    };
+    final metrics = getThemeMetrics(context);
 
     return SizedBox(
-      height: height,
+      height: metrics.titleBar.height,
       child: Stack(
         fit: .expand,
         alignment: .center,
@@ -37,7 +32,6 @@ class _WindowTitleBar extends StatelessWidget {
               ),
               .linux => const LinuxWindowControls(),
               .windows => WindowsWindowControls(
-                dimension: height,
                 onClosePressed: () async => _viewModel.close(),
                 onMaximizePressed: () async => _viewModel.maximize(),
                 onMinimizePressed: () async => _viewModel.minimize(),

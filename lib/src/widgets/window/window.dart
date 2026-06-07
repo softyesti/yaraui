@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaraui/src/domain/enums/operating_system.dart';
+import 'package:yaraui/src/mixins/theme_mixin.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
 import 'package:yaraui/src/widgets/window/controls/linux_window_controls.dart';

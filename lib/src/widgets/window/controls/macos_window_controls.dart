@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/mixins/theme_mixin.dart';
 
 /// macOS window controls.
 class MacOSWindowControls extends StatefulWidget {
@@ -25,47 +26,52 @@ class MacOSWindowControls extends StatefulWidget {
   State<StatefulWidget> createState() => _MacOSWindowControlsState();
 }
 
-class _MacOSWindowControlsState extends State<MacOSWindowControls> {
+class _MacOSWindowControlsState extends State<MacOSWindowControls>
+    with ThemeMixin {
   bool _hovered = false;
 
   @override
-  Widget build(BuildContext context) => Container(
-    alignment: .centerLeft,
-    padding: const .only(left: 20),
-    child: FocusableActionDetector(
-      onShowHoverHighlight: (h) => setState(() => _hovered = h),
-      child: Row(
-        spacing: 8,
-        mainAxisSize: .min,
-        children: [
-          _ButtonWidget(
-            hovered: _hovered,
-            icon: CupertinoIcons.xmark,
-            onPressed: widget.onClosePressed,
-            bgColor: const Color(0xFFF26863),
-            borderColor: const Color(0xFFD62C26),
-            fgColor: Colors.black.withValues(alpha: 0.8),
-          ),
-          _ButtonWidget(
-            hovered: _hovered,
-            icon: CupertinoIcons.minus,
-            onPressed: widget.onMinimizePressed,
-            bgColor: const Color(0xFFF4CB3B),
-            borderColor: const Color(0xFFE7B100),
-            fgColor: Colors.black.withValues(alpha: 0.8),
-          ),
-          _ButtonWidget(
-            hovered: _hovered,
-            icon: CupertinoIcons.fullscreen_exit,
-            onPressed: widget.onMaximizePressed,
-            bgColor: const Color(0xFF5AC544),
-            borderColor: const Color(0xFF1EAA29),
-            fgColor: Colors.black.withValues(alpha: 0.8),
-          ),
-        ],
+  Widget build(BuildContext context) {
+    final metrics = getThemeMetrics(context);
+
+    return Container(
+      alignment: .centerLeft,
+      padding: metrics.titleBar.padding,
+      child: FocusableActionDetector(
+        onShowHoverHighlight: (h) => setState(() => _hovered = h),
+        child: Row(
+          mainAxisSize: .min,
+          spacing: metrics.spacing.sm,
+          children: [
+            _ButtonWidget(
+              hovered: _hovered,
+              icon: CupertinoIcons.xmark,
+              onPressed: widget.onClosePressed,
+              bgColor: const Color(0xFFF26863),
+              borderColor: const Color(0xFFD62C26),
+              fgColor: Colors.black.withValues(alpha: 0.8),
+            ),
+            _ButtonWidget(
+              hovered: _hovered,
+              icon: CupertinoIcons.minus,
+              onPressed: widget.onMinimizePressed,
+              bgColor: const Color(0xFFF4CB3B),
+              borderColor: const Color(0xFFE7B100),
+              fgColor: Colors.black.withValues(alpha: 0.8),
+            ),
+            _ButtonWidget(
+              hovered: _hovered,
+              icon: CupertinoIcons.fullscreen,
+              onPressed: widget.onMaximizePressed,
+              bgColor: const Color(0xFF5AC544),
+              borderColor: const Color(0xFF1EAA29),
+              fgColor: Colors.black.withValues(alpha: 0.8),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _ButtonWidget extends StatelessWidget {
