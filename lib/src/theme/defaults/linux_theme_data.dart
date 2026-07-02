@@ -4,9 +4,12 @@ part of 'default_theme_data.dart';
 class LinuxThemeData extends DefaultThemeData {
   /// Creates a new [LinuxThemeData].
   const LinuxThemeData({
-    super.titleBar = const .new(
-      height: 32,
-      padding: .symmetric(horizontal: 20),
+    super.window = const .new(
+      borderRadius: .all(.circular(12)),
+      titleBar: .new(
+        height: 32,
+        padding: .symmetric(horizontal: 20),
+      ),
     ),
   });
 }

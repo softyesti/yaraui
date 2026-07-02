@@ -25,15 +25,15 @@ class WindowsWindowControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final dimension = theme.titleBar.height;
+    final dimension = theme.window.titleBar.height;
 
     return Align(
       alignment: .centerRight,
       child: Container(
         clipBehavior: .antiAlias,
-        decoration: const BoxDecoration(
-          color: Color(0xFF000000),
-          borderRadius: .only(bottomLeft: .circular(8)),
+        decoration: BoxDecoration(
+          color: const Color(0xFF000000),
+          borderRadius: .only(bottomLeft: theme.window.borderRadius.bottomLeft),
         ),
         child: Row(
           mainAxisSize: .min,

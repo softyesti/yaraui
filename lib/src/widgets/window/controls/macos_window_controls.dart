@@ -35,7 +35,7 @@ class _MacOSWindowControlsState extends State<MacOSWindowControls> {
 
     return Container(
       alignment: .centerLeft,
-      padding: theme.titleBar.padding,
+      padding: theme.window.titleBar.padding,
       child: FocusableActionDetector(
         onShowHoverHighlight: (h) => setState(() => _hovered = h),
         child: Row(

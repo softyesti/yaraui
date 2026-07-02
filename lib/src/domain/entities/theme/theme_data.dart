@@ -7,13 +7,13 @@ part 'theme_spacing.dart';
 class ThemeData {
   /// Creates a new [ThemeData].
   const ThemeData({
+    required this.window,
     required this.spacing,
-    required this.titleBar,
   });
+
+  /// Window theme.
+  final WindowTheme window;
 
   /// Theme spacing.
   final ThemeSpacing spacing;
-
-  /// Title bar theme.
-  final ThemeTitleBar titleBar;
 }

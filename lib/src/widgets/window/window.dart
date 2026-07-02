@@ -15,10 +15,7 @@ part 'window_view_model.dart';
 /// Application window.
 class Window extends StatefulWidget {
   /// Creates a new [Window].
-  const Window(
-    this.child, {
-    super.key,
-  });
+  const Window(this.child, {super.key});
 
   /// The widget below this widget in the tree.
   final Widget? child;

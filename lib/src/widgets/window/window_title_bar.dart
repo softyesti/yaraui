@@ -10,7 +10,7 @@ class _WindowTitleBar extends StatelessWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      height: theme.titleBar.height,
+      height: theme.window.titleBar.height,
       child: Stack(
         fit: .expand,
         alignment: .center,

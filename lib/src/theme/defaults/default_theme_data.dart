@@ -9,7 +9,7 @@ part 'windows_theme_data.dart';
 class DefaultThemeData extends ThemeData {
   /// Creates a new [DefaultThemeData].
   const DefaultThemeData({
-    required super.titleBar,
+    required super.window,
     super.spacing = const .new(
       xs: 4,
       sm: 8,

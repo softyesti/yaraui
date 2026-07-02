@@ -4,9 +4,12 @@ part of 'default_theme_data.dart';
 class WindowsThemeData extends DefaultThemeData {
   /// Creates a new [WindowsThemeData].
   const WindowsThemeData({
-    super.titleBar = const .new(
-      height: 32,
-      padding: .symmetric(horizontal: 20),
+    super.window = const .new(
+      borderRadius: .all(.circular(8)),
+      titleBar: .new(
+        height: 32,
+        padding: .symmetric(horizontal: 20),
+      ),
     ),
   });
 }
