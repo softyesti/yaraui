@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/theme/defaults/default_theme_data.dart';
 import 'package:yaraui/src/theme/theme.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
 import 'package:yaraui/src/widgets/window/window.dart';
@@ -354,7 +355,7 @@ class YaraApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Theme(
-    data: DefaultThemeData(),
+    data: DefaultThemeData.create(),
     child: _MainApp(
       color: const Color(0x00000000),
       title: title,

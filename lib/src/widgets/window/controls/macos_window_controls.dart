@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
-import 'package:yaraui/src/mixins/theme_mixin.dart';
+import 'package:yaraui/src/theme/theme.dart';
 
 /// macOS window controls.
 class MacOSWindowControls extends StatefulWidget {
@@ -26,22 +26,21 @@ class MacOSWindowControls extends StatefulWidget {
   State<StatefulWidget> createState() => _MacOSWindowControlsState();
 }
 
-class _MacOSWindowControlsState extends State<MacOSWindowControls>
-    with ThemeMixin {
+class _MacOSWindowControlsState extends State<MacOSWindowControls> {
   bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    final metrics = getThemeMetrics(context);
+    final theme = Theme.of(context);
 
     return Container(
       alignment: .centerLeft,
-      padding: metrics.titleBar.padding,
+      padding: theme.titleBar.padding,
       child: FocusableActionDetector(
         onShowHoverHighlight: (h) => setState(() => _hovered = h),
         child: Row(
           mainAxisSize: .min,
-          spacing: metrics.spacing.sm,
+          spacing: theme.spacing.sm,
           children: [
             _ButtonWidget(
               hovered: _hovered,

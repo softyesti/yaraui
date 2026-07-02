@@ -1,10 +1,10 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
-import 'package:yaraui/src/mixins/theme_mixin.dart';
+import 'package:yaraui/src/theme/theme.dart';
 
 /// Windows window controls.
-class WindowsWindowControls extends StatelessWidget with ThemeMixin {
+class WindowsWindowControls extends StatelessWidget {
   /// Creates a new [WindowsWindowControls].
   const WindowsWindowControls({
     required this.onClosePressed,
@@ -24,35 +24,36 @@ class WindowsWindowControls extends StatelessWidget with ThemeMixin {
 
   @override
   Widget build(BuildContext context) {
-    final metrics = getThemeMetrics(context);
+    final theme = Theme.of(context);
+    final dimension = theme.titleBar.height;
 
     return Align(
       alignment: .centerRight,
       child: Container(
         clipBehavior: .antiAlias,
-        decoration: BoxDecoration(
-          color: const Color(0xFF000000),
-          borderRadius: .only(bottomLeft: metrics.radius.sm),
+        decoration: const BoxDecoration(
+          color: Color(0xFF000000),
+          borderRadius: .only(bottomLeft: .circular(8)),
         ),
         child: Row(
           mainAxisSize: .min,
           children: [
             _ButtonWidget(
-              dimension: metrics.titleBar.height,
+              dimension: dimension,
               fgColor: Colors.white,
               bgColor: const Color(0x1AFFFFFF),
               icon: FluentIcons.subtract_16_regular,
               onPressed: onMinimizePressed,
             ),
             _ButtonWidget(
-              dimension: metrics.titleBar.height,
+              dimension: dimension,
               fgColor: Colors.white,
               bgColor: const Color(0x1AFFFFFF),
               icon: FluentIcons.maximize_16_regular,
               onPressed: onMaximizePressed,
             ),
             _ButtonWidget(
-              dimension: metrics.titleBar.height,
+              dimension: dimension,
               fgColor: Colors.white,
               bgColor: const Color(0xFFC42B1C),
               icon: FluentIcons.dismiss_16_regular,

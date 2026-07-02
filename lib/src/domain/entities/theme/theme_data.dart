@@ -1,14 +1,19 @@
 import 'package:flutter/widgets.dart';
 
-part 'theme_metrics.dart';
+part 'window_theme.dart';
+part 'theme_spacing.dart';
 
 /// Represents theme data.
 class ThemeData {
   /// Creates a new [ThemeData].
   const ThemeData({
-    required this.metrics,
+    required this.spacing,
+    required this.titleBar,
   });
 
-  /// Theme metrics.
-  final ThemeMetrics metrics;
+  /// Theme spacing.
+  final ThemeSpacing spacing;
+
+  /// Title bar theme.
+  final ThemeTitleBar titleBar;
 }

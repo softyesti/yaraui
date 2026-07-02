@@ -1,13 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaraui/src/domain/enums/operating_system.dart';
-import 'package:yaraui/src/mixins/theme_mixin.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
+import 'package:yaraui/src/theme/theme.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
 import 'package:yaraui/src/widgets/window/controls/linux_window_controls.dart';
 import 'package:yaraui/src/widgets/window/controls/macos_window_controls.dart';
 import 'package:yaraui/src/widgets/window/controls/windows_window_controls.dart';
 
+part 'window_content.dart';
 part 'window_title_bar.dart';
 part 'window_view_model.dart';
 
@@ -46,26 +47,23 @@ class _WindowState extends State<Window> {
   }
 
   @override
-  Widget build(BuildContext context) => ColoredBox(
-    color: const Color(0x80000000),
-    child: Stack(
-      fit: .expand,
-      alignment: .center,
-      clipBehavior: .antiAlias,
-      children: [
-        Positioned.fill(
-          child: Container(
-            padding: const .all(4),
-            child: widget.child ?? const SizedBox.expand(),
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: const Color(0x80000000),
+      child: Stack(
+        fit: .expand,
+        alignment: .center,
+        clipBehavior: .antiAlias,
+        children: [
+          Positioned.fill(child: _WindowContent(child: widget.child)),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: _WindowTitleBar(_viewModel),
           ),
-        ),
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: _WindowTitleBar(_viewModel),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

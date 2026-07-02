@@ -1,9 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:yaraui/src/domain/entities/theme/theme_data.dart';
-import 'package:yaraui/src/theme/metrics/default_theme_metrics.dart';
-import 'package:yaraui/src/utils/platform_util.dart';
-
-part 'default_theme_data.dart';
 
 /// An inherited widget that provides [ThemeData] to its descendants.
 class Theme extends InheritedWidget {

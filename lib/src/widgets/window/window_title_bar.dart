@@ -1,16 +1,16 @@
 part of 'window.dart';
 
-class _WindowTitleBar extends StatelessWidget with ThemeMixin {
+class _WindowTitleBar extends StatelessWidget {
   const _WindowTitleBar(this._viewModel);
 
   final _WindowViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    final metrics = getThemeMetrics(context);
+    final theme = Theme.of(context);
 
     return SizedBox(
-      height: metrics.titleBar.height,
+      height: theme.titleBar.height,
       child: Stack(
         fit: .expand,
         alignment: .center,
@@ -36,7 +36,9 @@ class _WindowTitleBar extends StatelessWidget with ThemeMixin {
                 onMaximizePressed: () async => _viewModel.maximize(),
                 onMinimizePressed: () async => _viewModel.minimize(),
               ),
-              OperatingSystem() => throw UnsupportedError(''),
+              OperatingSystem() => throw UnsupportedError(
+                'Unsupported platform: ${PlatformUtil.operatingSystem}',
+              ),
             },
           ),
         ],

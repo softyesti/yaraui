@@ -63,7 +63,9 @@ class BitsdojoWindowService extends WindowService {
       true => Window.exitFullscreen(),
       false => Window.enterFullscreen(),
     },
-    OperatingSystem() => throw UnsupportedError(''),
+    OperatingSystem() => throw UnsupportedError(
+      'Unsupported platform: ${PlatformUtil.operatingSystem}',
+    ),
   };
 
   @override
@@ -82,7 +84,9 @@ class BitsdojoWindowService extends WindowService {
     effect: switch (PlatformUtil.operatingSystem) {
       .linux => .transparent,
       .macos || .windows => .acrylic,
-      OperatingSystem() => throw UnsupportedError(''),
+      OperatingSystem() => throw UnsupportedError(
+        'Unsupported platform: ${PlatformUtil.operatingSystem}',
+      ),
     },
   );
 }
