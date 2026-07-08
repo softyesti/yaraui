@@ -18,12 +18,14 @@ sealed class YaraUI {
   const YaraUI();
 
   /// Initializes the library.
+  ///
+  /// Make sure you've initialized the bindings by placing
+  /// `WidgetsFlutterBinding.ensureInitialized();` at the beginning
+  /// of the main method.
   static Future<void> init({
     required Widget app,
     required WindowSettings window,
   }) async {
-    WidgetsFlutterBinding.ensureInitialized();
-
     GetIt.I.registerSingletonAsync(
       () async => WindowService.create().init(window),
       dispose: (service) async => service.dispose(),
