@@ -45,8 +45,14 @@ class _WindowState extends State<Window> {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: const Color(0x80000000),
+    final theme = Theme.of(context);
+
+    return Container(
+      clipBehavior: .antiAlias,
+      decoration: ShapeDecoration(
+        color: const Color(0x80000000),
+        shape: RoundedRectangleBorder(borderRadius: theme.window.borderRadius),
+      ),
       child: Stack(
         fit: .expand,
         alignment: .center,

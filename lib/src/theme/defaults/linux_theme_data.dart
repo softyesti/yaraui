@@ -5,10 +5,10 @@ class LinuxThemeData extends DefaultThemeData {
   /// Creates a new [LinuxThemeData].
   const LinuxThemeData({
     super.window = const .new(
-      borderRadius: .all(.circular(12)),
+      borderRadius: .all(.circular(16)),
       titleBar: .new(
-        height: 32,
-        padding: .symmetric(horizontal: 20),
+        height: 46,
+        padding: .symmetric(horizontal: 14),
       ),
     ),
   });

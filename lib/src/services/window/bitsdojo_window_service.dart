@@ -72,7 +72,7 @@ class BitsdojoWindowService extends WindowService {
   Future<void> drag() async => appWindow.startDragging();
 
   Future<void> _hideControls() async => Future.wait([
-    Window.hideWindowControls(),
+    if (!Platform.isLinux) Window.hideWindowControls(),
     if (Platform.isMacOS) Window.hideZoomButton(),
     if (Platform.isMacOS) Window.hideCloseButton(),
     if (Platform.isMacOS) Window.hideMiniaturizeButton(),

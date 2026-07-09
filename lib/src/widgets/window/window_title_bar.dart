@@ -30,7 +30,11 @@ class _WindowTitleBar extends StatelessWidget {
                 onMaximizePressed: () async => _viewModel.fullscreen(),
                 onMinimizePressed: () async => _viewModel.minimize(),
               ),
-              .linux => const LinuxWindowControls(),
+              .linux => LinuxWindowControls(
+                onClosePressed: () async => _viewModel.close(),
+                onMaximizePressed: () async => _viewModel.maximize(),
+                onMinimizePressed: () async => _viewModel.minimize(),
+              ),
               .windows => WindowsWindowControls(
                 onClosePressed: () async => _viewModel.close(),
                 onMaximizePressed: () async => _viewModel.maximize(),
