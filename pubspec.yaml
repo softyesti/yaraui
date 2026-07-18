@@ -16,8 +16,10 @@ dependencies:
     sdk: flutter
 
   get_it: ^9.2.1
+  webview_all: ^1.2.1
   flutter_acrylic: ^1.1.4
   cupertino_icons: ^1.0.9
+  package_info_plus: ^9.0.1
   fluentui_system_icons: ^1.1.273
   bitsdojo_window:
     git:
