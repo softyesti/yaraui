@@ -1,7 +1,14 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:yaraui/src/domain/entities/window_settings.dart';
-import 'package:yaraui/src/services/window/bitsdojo_window_service.dart';
+import 'package:yaraui/src/domain/enums/operating_system.dart';
+import 'package:yaraui/src/utils/platform_util.dart';
+
+part 'bitsdojo_window_service.dart';
 
 /// Service to manage application window.
 abstract class WindowService {
@@ -9,7 +16,8 @@ abstract class WindowService {
   const WindowService();
 
   /// Creates a new [WindowService] with default implementation.
-  factory WindowService.create() => const BitsdojoWindowService();
+  /// https://pub.dev/packages/bitsdojo_window.
+  const factory WindowService.create() = _BitsdojoWindowService;
 
   /// Initializes the window service.
   Future<WindowService> init(WindowSettings settings);

@@ -1,17 +1,9 @@
-import 'dart:async';
-import 'dart:io';
-import 'package:bitsdojo_window/bitsdojo_window.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_acrylic/flutter_acrylic.dart';
-import 'package:yaraui/src/domain/entities/window_settings.dart';
-import 'package:yaraui/src/domain/enums/operating_system.dart';
-import 'package:yaraui/src/services/window/window_service.dart';
-import 'package:yaraui/src/utils/platform_util.dart';
+part of 'window_service.dart';
 
-/// Bitsdojo package implementation of [WindowService].
-class BitsdojoWindowService extends WindowService {
-  /// Creates a new [BitsdojoWindowService].
-  const BitsdojoWindowService();
+/// Implementation of [WindowService] using the `bitsdojo_window` package.
+class _BitsdojoWindowService extends WindowService {
+  /// Creates a new [_BitsdojoWindowService].
+  const _BitsdojoWindowService();
 
   @override
   Future<WindowService> init(WindowSettings settings) async {
