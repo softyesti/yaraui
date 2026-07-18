@@ -20,7 +20,7 @@ class _WindowTitleBar extends StatelessWidget {
               behavior: .translucent,
               onPanStart: (_) async => _viewModel.drag(),
               onDoubleTap: () async => _viewModel.maximize(),
-              child: const SizedBox.expand(),
+              child: Container(color: const Color(0x03000000)),
             ),
           ),
           Positioned.fill(
