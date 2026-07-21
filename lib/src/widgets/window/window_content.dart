@@ -9,16 +9,13 @@ class _WindowContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final padding = theme.spacing.xs;
-    final borderRadius = theme.window.borderRadius - .circular(padding);
+    final padding = theme.window.padding;
+    final borderRadius = theme.window.borderRadius - .circular(padding.top);
 
     return Padding(
-      padding: .all(padding),
-      child: Container(
-        clipBehavior: .antiAlias,
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(borderRadius: borderRadius),
-        ),
+      padding: padding,
+      child: ClipRSuperellipse(
+        borderRadius: borderRadius,
         child: child,
       ),
     );

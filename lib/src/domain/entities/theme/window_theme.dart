@@ -4,9 +4,13 @@ part of 'theme_data.dart';
 class WindowTheme {
   /// Creates a new [WindowTheme].
   const WindowTheme({
+    required this.padding,
     required this.titleBar,
     required this.borderRadius,
   });
+
+  /// Window content padding.
+  final EdgeInsets padding;
 
   /// Window title bar.
   final ThemeTitleBar titleBar;
