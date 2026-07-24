@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.44.6",
+  "dart.flutterSdkPath": ".fvm/versions/3.44.8",
   "cSpell.words": [
     "bitsdojo",
     "buildlog",
@@ -11,6 +11,7 @@
     "pubspec",
     "scrollables",
     "softyes",
+    "Superellipse",
     "titlebar",
     "yaraui"
   ],
