@@ -11,7 +11,6 @@ import 'package:yaraui/src/services/info/info_service.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 
 export 'domain.dart';
-export 'services.dart';
 export 'widgets.dart';
 
 /// SoftYesTI's cross-platform Design System.
@@ -34,7 +33,7 @@ sealed class YaraUI {
         instanceName: 'yaraui_info_service',
       )
       ..registerSingletonAsync(
-        () async => const WindowService.create().init(window),
+        () async => WindowService.create(window).init(),
         dispose: (service) async => service.dispose(),
         instanceName: 'yaraui_window_service',
         onCreated: (_) => runApp(app),

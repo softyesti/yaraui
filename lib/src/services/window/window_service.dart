@@ -13,14 +13,19 @@ part 'bitsdojo_window_service.dart';
 /// Service to manage application window.
 abstract class WindowService {
   /// Creates a new [WindowService].
-  const WindowService();
+  const WindowService(this.settings);
 
   /// Creates a new [WindowService] with default implementation.
   /// https://pub.dev/packages/bitsdojo_window.
-  const factory WindowService.create() = _BitsdojoWindowService;
+  const factory WindowService.create(
+    WindowSettings settings,
+  ) = _BitsdojoWindowService;
+
+  /// Window settings.
+  final WindowSettings settings;
 
   /// Initializes the window service.
-  Future<WindowService> init(WindowSettings settings);
+  Future<WindowService> init();
 
   /// Disposes the window service.
   Future<void> dispose();

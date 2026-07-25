@@ -3,10 +3,10 @@ part of 'window_service.dart';
 /// Implementation of [WindowService] using the `bitsdojo_window` package.
 class _BitsdojoWindowService extends WindowService {
   /// Creates a new [_BitsdojoWindowService].
-  const _BitsdojoWindowService();
+  const _BitsdojoWindowService(super.settings);
 
   @override
-  Future<WindowService> init(WindowSettings settings) async {
+  Future<WindowService> init() async {
     await Window.initialize();
     await Future.wait([_setEffect(), _hideControls()]);
 
