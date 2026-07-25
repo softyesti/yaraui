@@ -1,13 +1,12 @@
 part of 'window.dart';
 
 class _WindowTitleBar extends StatelessWidget {
-  const _WindowTitleBar(this._viewModel);
-
-  final _WindowViewModel _viewModel;
+  const _WindowTitleBar();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final controller = Window.of(context);
 
     return SizedBox(
       height: theme.window.titleBar.height,
@@ -18,29 +17,29 @@ class _WindowTitleBar extends StatelessWidget {
           Positioned.fill(
             child: GestureDetector(
               behavior: .translucent,
-              onPanStart: (_) async => _viewModel.drag(),
-              onDoubleTap: () async => _viewModel.maximize(),
-              child: Container(color: const Color(0x03000000)),
+              onPanStart: (_) async => controller.drag(),
+              onDoubleTap: () async => controller.maximize(),
+              child: const SizedBox.expand(),
             ),
           ),
           Positioned.fill(
             child: switch (PlatformUtil.operatingSystem) {
               .macos => MacOSWindowControls(
-                onClosePressed: () async => _viewModel.close(),
-                onMaximizePressed: () async => _viewModel.fullscreen(),
-                onMinimizePressed: () async => _viewModel.minimize(),
+                onClosePressed: () async => controller.close(),
+                onMaximizePressed: () async => controller.fullscreen(),
+                onMinimizePressed: () async => controller.minimize(),
               ),
               .linux => LinuxWindowControls(
-                onClosePressed: () async => _viewModel.close(),
-                onMaximizePressed: () async => _viewModel.maximize(),
-                onMinimizePressed: () async => _viewModel.minimize(),
+                onClosePressed: () async => controller.close(),
+                onMaximizePressed: () async => controller.maximize(),
+                onMinimizePressed: () async => controller.minimize(),
               ),
               .windows => WindowsWindowControls(
-                onClosePressed: () async => _viewModel.close(),
-                onMaximizePressed: () async => _viewModel.maximize(),
-                onMinimizePressed: () async => _viewModel.minimize(),
+                onClosePressed: () async => controller.close(),
+                onMaximizePressed: () async => controller.maximize(),
+                onMinimizePressed: () async => controller.minimize(),
               ),
-              OperatingSystem() => throw UnsupportedError(
+              _ => throw UnsupportedError(
                 'Unsupported platform: ${PlatformUtil.operatingSystem}',
               ),
             },
