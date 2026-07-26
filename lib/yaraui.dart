@@ -10,12 +10,14 @@ import 'package:yaraui/src/domain/entities/window_settings.dart';
 import 'package:yaraui/src/services/info/info_service.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 
+export 'package:solar_icon_pack/solar_icon_pack.dart';
+
 export 'domain.dart';
 export 'widgets.dart';
 
 /// SoftYesTI's cross-platform Design System.
 sealed class YaraUI {
-  const YaraUI();
+  const YaraUI._();
 
   /// Initializes the library.
   ///
@@ -28,15 +30,15 @@ sealed class YaraUI {
   }) async {
     GetIt.I
       ..registerSingletonAsync(
-        () async => InfoService.create().init(),
-        dispose: (service) async => service.dispose(),
+        InfoService.create().init,
         instanceName: 'yaraui_info_service',
+        dispose: (service) async => service.dispose(),
       )
       ..registerSingletonAsync(
-        () async => WindowService.create(window).init(),
-        dispose: (service) async => service.dispose(),
-        instanceName: 'yaraui_window_service',
+        WindowService.create(window).init,
         onCreated: (_) => runApp(app),
+        instanceName: 'yaraui_window_service',
+        dispose: (service) async => service.dispose(),
       );
 
     log('Initialized!', name: 'yaraui');
