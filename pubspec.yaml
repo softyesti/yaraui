@@ -18,15 +18,11 @@ dependencies:
   get_it: ^9.2.1
   webview_all: ^1.2.1
   flutter_acrylic: ^1.1.4
+  window_manager: ^0.5.2
   cupertino_icons: ^1.0.9
   solar_icon_pack: ^0.3.0
   package_info_plus: ^9.0.1
   fluentui_system_icons: ^1.1.273
-  bitsdojo_window:
-    git:
-      ref: master
-      path: bitsdojo_window/
-      url: https://github.com/kingdomseed/desktop_title_bar_controls
 
 dev_dependencies:
   flutter_test:

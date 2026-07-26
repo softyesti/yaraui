@@ -26,7 +26,7 @@ class _WindowTitleBar extends StatelessWidget {
             child: switch (PlatformUtil.operatingSystem) {
               .macos => MacOSWindowControls(
                 onClosePressed: () async => controller.close(),
-                onMaximizePressed: () async => controller.fullscreen(),
+                onMaximizePressed: () async => controller.fullOrRestore(),
                 onMinimizePressed: () async => controller.minimize(),
               ),
               .linux => LinuxWindowControls(

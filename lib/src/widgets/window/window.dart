@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaraui/src/domain/entities/window_settings.dart';
+import 'package:yaraui/src/domain/enums/window_state.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 import 'package:yaraui/src/theme/theme.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
@@ -36,7 +39,7 @@ class _WindowState extends State<Window> {
   @override
   void initState() {
     super.initState();
-    _controller = WindowController._(
+    _controller = WindowController(
       windowService: GetIt.I.get<WindowService>(
         instanceName: 'yaraui_window_service',
       ),
@@ -45,7 +48,7 @@ class _WindowState extends State<Window> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    unawaited(_controller.dispose());
     super.dispose();
   }
 

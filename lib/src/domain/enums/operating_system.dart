@@ -1,4 +1,4 @@
-/// Enum that represents operating systems.
+/// Represents operating systems.
 enum OperatingSystem {
   /// iOS.
   ios,
@@ -19,8 +19,7 @@ enum OperatingSystem {
   fuchsia,
 
   /// Other.
-  other
-  ;
+  other;
 
   const OperatingSystem();
 
@@ -32,6 +31,6 @@ enum OperatingSystem {
     'windows' => .windows,
     'android' => .android,
     'fuchsia' => .fuchsia,
-    String() => .other,
+    _ => .other,
   };
 }

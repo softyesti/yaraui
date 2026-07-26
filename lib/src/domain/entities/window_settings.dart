@@ -1,10 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:yaraui/src/domain/enums/window_state.dart';
 
-/// Entity that represents a window settings.
+/// Represents the window settings.
 class WindowSettings {
-  /// Creates a new [WindowSettings].
+  /// Represents the window settings.
   const WindowSettings({
     required this.title,
+    this.state = .windowed,
     this.size = const Size(1280, 768),
     this.minSize = const Size(1024, 768),
     this.maxSize,
@@ -12,6 +14,9 @@ class WindowSettings {
 
   /// Window title.
   final String title;
+
+  /// Window state.
+  final WindowState state;
 
   /// Window default size.
   final Size size;
