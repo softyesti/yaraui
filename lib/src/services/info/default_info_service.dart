@@ -1,14 +1,14 @@
 part of 'info_service.dart';
 
-/// Implementation of [InfoService] using the `package_info_plus` package.
-class _PackageInfoService extends InfoService {
-  /// Creates a new [_PackageInfoService].
-  _PackageInfoService();
+/// Default implementation of [InfoService].
+class _DefaultInfoService extends InfoService {
+  /// Default implementation of [InfoService].
+  _DefaultInfoService._();
 
   late final PackageInfo _packageInfo;
 
   @override
-  Future<_PackageInfoService> init() async {
+  Future<InfoService> init() async {
     _packageInfo = await PackageInfo.fromPlatform();
     return this;
   }

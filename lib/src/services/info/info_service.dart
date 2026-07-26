@@ -1,6 +1,6 @@
 import 'package:package_info_plus/package_info_plus.dart';
 
-part 'package_info_service.dart';
+part 'default_info_service.dart';
 
 /// Service for retrieving application package information.
 abstract class InfoService {
@@ -9,7 +9,7 @@ abstract class InfoService {
 
   /// Creates a new [InfoService] with default implementation.
   /// https://pub.dev/packages/package_info_plus.
-  factory InfoService.create() = _PackageInfoService;
+  factory InfoService.create() = _DefaultInfoService._;
 
   /// The app name.
   ///
