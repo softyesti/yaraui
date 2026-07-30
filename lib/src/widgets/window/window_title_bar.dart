@@ -5,11 +5,11 @@ class _WindowTitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final controller = Window.of(context);
+    final titleBar = Theme.of(context).window.titleBar;
 
     return SizedBox(
-      height: theme.window.titleBar.height,
+      height: titleBar.height,
       child: Stack(
         fit: .expand,
         alignment: .center,
@@ -18,25 +18,26 @@ class _WindowTitleBar extends StatelessWidget {
             child: GestureDetector(
               behavior: .translucent,
               onPanStart: (_) async => controller.drag(),
-              onDoubleTap: () async => controller.maximize(),
+              onDoubleTap: () async => controller.maxOrRestore(),
               child: const SizedBox.expand(),
             ),
           ),
-          Positioned.fill(
+          Padding(
+            padding: titleBar.padding,
             child: switch (PlatformUtil.operatingSystem) {
-              .macos => MacOSWindowControls(
+              .macos => _MacOSWindowControls(
                 onClosePressed: () async => controller.close(),
+                onMinimizePressed: () async => controller.minimize(),
                 onMaximizePressed: () async => controller.fullOrRestore(),
+              ),
+              .linux => _LinuxWindowControls(
+                onClosePressed: () async => controller.close(),
+                onMaximizePressed: () async => controller.maxOrRestore(),
                 onMinimizePressed: () async => controller.minimize(),
               ),
-              .linux => LinuxWindowControls(
+              .windows => _WindowsWindowControls(
                 onClosePressed: () async => controller.close(),
-                onMaximizePressed: () async => controller.maximize(),
-                onMinimizePressed: () async => controller.minimize(),
-              ),
-              .windows => WindowsWindowControls(
-                onClosePressed: () async => controller.close(),
-                onMaximizePressed: () async => controller.maximize(),
+                onMaximizePressed: () async => controller.maxOrRestore(),
                 onMinimizePressed: () async => controller.minimize(),
               ),
               _ => throw UnsupportedError(

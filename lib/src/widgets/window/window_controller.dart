@@ -38,7 +38,7 @@ class WindowController extends ChangeNotifier {
   Future<void> minimize() async => _windowService.minimize();
 
   /// Maximizes the window or restore if its maximized.
-  Future<void> maximize() async => _windowService.maxOrRestore();
+  Future<void> maxOrRestore() async => _windowService.maxOrRestore();
 
   /// Enter full-screen mode or exit it if you're already in that mode.
   Future<void> fullOrRestore() async => _windowService.fullOrRestore();
