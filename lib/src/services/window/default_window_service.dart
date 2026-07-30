@@ -22,8 +22,12 @@ class _DefaultWindowService extends WindowService with WindowListener {
 
   @override
   Future<WindowService> init() async {
-    await Window.initialize();
-    await Future.wait([_setEffect(), windowManager.ensureInitialized()]);
+    await Future.wait([
+      Window.initialize(),
+      windowManager.ensureInitialized(),
+    ]);
+
+    await _setEffect();
 
     final options = WindowOptions(
       center: true,
