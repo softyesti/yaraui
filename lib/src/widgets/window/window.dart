@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/cupertino.dart' show CupertinoIcons;
+import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:yaraui/src/domain/entities/window_settings.dart';
@@ -7,14 +10,17 @@ import 'package:yaraui/src/domain/enums/window_state.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
 import 'package:yaraui/src/theme/theme.dart';
 import 'package:yaraui/src/utils/platform_util.dart';
-import 'package:yaraui/src/widgets/window/controls/linux_window_controls.dart';
-import 'package:yaraui/src/widgets/window/controls/macos_window_controls.dart';
-import 'package:yaraui/src/widgets/window/controls/windows_window_controls.dart';
+import 'package:yaraui/src/widgets/conditional.dart';
 
 part 'window_content.dart';
+part 'window_controls.dart';
 part 'window_title_bar.dart';
 part 'window_inherited.dart';
 part 'window_controller.dart';
+part 'window_controls_safe_area.dart';
+part 'controls/linux_window_controls.dart';
+part 'controls/macos_window_controls.dart';
+part 'controls/windows_window_controls.dart';
 
 /// Application window.
 class Window extends StatefulWidget {
@@ -62,7 +68,7 @@ class _WindowState extends State<Window> {
         clipBehavior: .antiAlias,
         decoration: ShapeDecoration(
           color: const Color(0x80000000),
-          shape: RoundedRectangleBorder(
+          shape: RoundedSuperellipseBorder(
             borderRadius: theme.window.borderRadius,
           ),
         ),

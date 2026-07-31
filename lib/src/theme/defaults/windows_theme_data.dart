@@ -9,7 +9,7 @@ class WindowsThemeData extends DefaultThemeData {
       borderRadius: .all(.circular(8)),
       titleBar: .new(
         height: 32,
-        padding: .symmetric(horizontal: 20),
+        padding: .zero,
       ),
     ),
   });

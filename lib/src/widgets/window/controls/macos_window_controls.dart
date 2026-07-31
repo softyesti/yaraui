@@ -1,118 +1,99 @@
-import 'package:flutter/cupertino.dart' show CupertinoIcons;
-import 'package:flutter/material.dart' show Colors;
-import 'package:flutter/widgets.dart';
-import 'package:yaraui/src/theme/theme.dart';
+part of '../window.dart';
 
-/// macOS window controls.
-class MacOSWindowControls extends StatefulWidget {
-  /// Creates a new [MacOSWindowControls].
-  const MacOSWindowControls({
+/// MacOS window controls.
+class _MacOSWindowControls extends StatefulWidget {
+  /// MacOS window controls.
+  const _MacOSWindowControls({
     required this.onClosePressed,
-    required this.onMaximizePressed,
     required this.onMinimizePressed,
-    super.key,
+    required this.onMaximizePressed,
   });
 
   /// Close button callback.
   final VoidCallback onClosePressed;
 
-  /// Maximize button callback.
-  final VoidCallback onMaximizePressed;
-
   /// Minimize button callback.
   final VoidCallback onMinimizePressed;
+
+  /// Maximize button callback.
+  final VoidCallback onMaximizePressed;
 
   @override
   State<StatefulWidget> createState() => _MacOSWindowControlsState();
 }
 
-class _MacOSWindowControlsState extends State<MacOSWindowControls> {
+class _MacOSWindowControlsState extends State<_MacOSWindowControls> {
   bool _hovered = false;
+  late final WindowController _window;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _window = Window.of(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    const iconSize = 10.0;
+    const dimension = 14.0;
+    const borderWidth = 0.5;
+    const shape = BoxShape.circle;
 
-    return Container(
-      alignment: .centerLeft,
-      padding: theme.window.titleBar.padding,
-      child: FocusableActionDetector(
-        onShowHoverHighlight: (h) => setState(() => _hovered = h),
-        child: Row(
-          mainAxisSize: .min,
-          spacing: theme.spacing.sm,
-          children: [
-            _ButtonWidget(
-              hovered: _hovered,
-              icon: CupertinoIcons.xmark,
-              onPressed: widget.onClosePressed,
-              bgColor: const Color(0xFFF26863),
-              borderColor: const Color(0xFFD62C26),
-              fgColor: Colors.black.withValues(alpha: 0.8),
+    return Conditional.listenable(
+      listenable: _window,
+      condition: () => _window._state != .fullscreen,
+      child: _WindowControls(
+        spacing: 8,
+        alignment: .centerLeft,
+        onHover: (h) => setState(() => _hovered = h),
+        children: [
+          _WindowControl(
+            shape: shape,
+            width: dimension,
+            height: dimension,
+            iconSize: iconSize,
+            iconVisibility: _hovered,
+            icon: CupertinoIcons.xmark,
+            onPressed: widget.onClosePressed,
+            bgColor: const Color(0xFFF26863),
+            fgColor: Colors.black.withValues(alpha: 0.8),
+            border: Border.all(
+              width: borderWidth,
+              color: const Color(0xFFD62C26),
             ),
-            _ButtonWidget(
-              hovered: _hovered,
-              icon: CupertinoIcons.minus,
-              onPressed: widget.onMinimizePressed,
-              bgColor: const Color(0xFFF4CB3B),
-              borderColor: const Color(0xFFE7B100),
-              fgColor: Colors.black.withValues(alpha: 0.8),
+          ),
+          _WindowControl(
+            shape: shape,
+            width: dimension,
+            height: dimension,
+            iconSize: iconSize,
+            iconVisibility: _hovered,
+            icon: CupertinoIcons.minus,
+            onPressed: widget.onMinimizePressed,
+            bgColor: const Color(0xFFF4CB3B),
+            fgColor: Colors.black.withValues(alpha: 0.8),
+            border: Border.all(
+              width: borderWidth,
+              color: const Color(0xFFE7B100),
             ),
-            _ButtonWidget(
-              hovered: _hovered,
-              icon: CupertinoIcons.fullscreen,
-              onPressed: widget.onMaximizePressed,
-              bgColor: const Color(0xFF5AC544),
-              borderColor: const Color(0xFF1EAA29),
-              fgColor: Colors.black.withValues(alpha: 0.8),
+          ),
+          _WindowControl(
+            shape: shape,
+            width: dimension,
+            height: dimension,
+            iconSize: iconSize,
+            iconVisibility: _hovered,
+            icon: CupertinoIcons.fullscreen,
+            onPressed: widget.onMaximizePressed,
+            bgColor: const Color(0xFF5AC544),
+            fgColor: Colors.black.withValues(alpha: 0.8),
+            border: Border.all(
+              width: borderWidth,
+              color: const Color(0xFF1EAA29),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
-}
-
-class _ButtonWidget extends StatelessWidget {
-  const _ButtonWidget({
-    required this.icon,
-    required this.hovered,
-    required this.onPressed,
-    required this.fgColor,
-    required this.bgColor,
-    required this.borderColor,
-  });
-
-  final IconData icon;
-  final bool hovered;
-  final VoidCallback onPressed;
-  final Color fgColor;
-  final Color bgColor;
-  final Color borderColor;
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-    onTap: onPressed,
-    child: Container(
-      width: 14,
-      height: 14,
-      alignment: .center,
-      decoration: BoxDecoration(
-        color: bgColor,
-        shape: .circle,
-        border: .all(
-          color: borderColor,
-          width: .5,
-        ),
-      ),
-      child: Visibility(
-        visible: hovered,
-        child: Icon(
-          icon,
-          size: 10,
-          color: fgColor,
-        ),
-      ),
-    ),
-  );
 }
