@@ -15,6 +15,8 @@ class _WindowControls extends StatelessWidget {
   final BoxDecoration? decoration;
   final ValueChanged<bool>? onHover;
 
+  static final GlobalKey _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -23,6 +25,7 @@ class _WindowControls extends StatelessWidget {
         onShowHoverHighlight: onHover,
         child: Container(
           decoration: decoration,
+          key: _WindowControls._key,
           clipBehavior: decoration == null ? .none : .antiAlias,
           child: Row(
             mainAxisSize: .min,

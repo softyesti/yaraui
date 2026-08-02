@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
+import 'package:yaraui/src/domain/entities/theme/theme_data.dart';
 import 'package:yaraui/src/domain/entities/window_settings.dart';
 import 'package:yaraui/src/domain/enums/window_state.dart';
 import 'package:yaraui/src/services/window/window_service.dart';
@@ -17,10 +18,12 @@ part 'window_controls.dart';
 part 'window_title_bar.dart';
 part 'window_inherited.dart';
 part 'window_controller.dart';
-part 'window_controls_safe_area.dart';
 part 'controls/linux_window_controls.dart';
 part 'controls/macos_window_controls.dart';
 part 'controls/windows_window_controls.dart';
+part 'safe_area/window_controls_safe_area.dart';
+part 'safe_area/macos_window_controls_safe_area.dart';
+part 'safe_area/default_window_controls_safe_area.dart';
 
 /// Application window.
 class Window extends StatefulWidget {
