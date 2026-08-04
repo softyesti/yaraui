@@ -1,16 +1,18 @@
-name: _
-description: SoftYesTI's cross-platform design system.
+name: yaraui_desktop
+description: Desktop implementations of YaraUI. SoftYesTI's cross-platform design system.
 
-publish_to: none
 homepage: https://softyes.com.br
 repository: https://github.com/softyesti/yaraui
 issue_tracker: https://github.com/softyesti/yaraui/issues
 
-workspace:
-  - yaraui/
-  - yaraui_core/
-  - yaraui_mobile/
-  - yaraui_desktop/
+platforms:
+  macos:
+  linux:
+  windows:
+
+resolution: workspace
+
+version: 0.1.0
 
 environment:
   sdk: ^3.12.2
@@ -19,8 +21,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  solar_icon_pack: ^0.3.0
 
 dev_dependencies:
   flutter_test:

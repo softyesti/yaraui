@@ -1,6 +1,6 @@
-# YaraUI | Design System
+# YaraUI | Mobile
 
-SoftYesTI's cross-platform Design System.
+Mobile implementations of YaraUI. SoftYesTI's cross-platform design system.
 
 ## 🧰 Features
 
@@ -18,11 +18,7 @@ Coming soon...
 ## 🖥️ Platforms
 
 - iOS 🟡
-- Linux 🟡
-- macOS 🟡
 - Android 🟡
-- WearOS 🟡
-- Windows 🟡
 
 ## 📜 Credits
 

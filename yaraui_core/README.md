@@ -1,6 +1,6 @@
-# YaraUI | Design System
+# YaraUI | Core
 
-SoftYesTI's cross-platform Design System.
+Code shared among the YaraUI packages. SoftYesTI's cross-platform design system.
 
 ## 🧰 Features
 
